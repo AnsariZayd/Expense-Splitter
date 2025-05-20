@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3-Way Expense Splitter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>3-Way Expense Splitter</h1>
+
+  <div id="userSelect">
+    <label for="user">Select your name:</label>
+    <select id="user">
+      <option value="">-- Select User --</option>
+      <option value="Zayd">Zayd</option>
+      <option value="Ishraque">Ishraque</option>
+      <option value="Simra">Simra</option>
+    </select>
+    <button id="btnStart">Start</button>
+  </div>
+
+  <div id="app" class="hidden">
+    <p>Logged in as: <b id="currentUser"></b></p>
+
+    <label for="desc">Description:</label>
+    <input type="text" id="desc" placeholder="Brief description" />
+
+    <label for="amount">Amount Paid (₹):</label>
+    <input type="number" id="amount" placeholder="Enter amount paid by you" />
+
+    <button id="addExpenseBtn">Add Expense</button>
+
+    <div class="balances">
+      <h2>Balances</h2>
+      <ul id="balancesList"></ul>
+    </div>
+
+    <div class="expense-list">
+      <h2>Expenses</h2>
+      <ul id="expenseList"></ul>
+    </div>
+
+    <div class="monthly-summary">
+      <h2>Monthly Summary</h2>
+      <ul id="monthlySummaryList"></ul>
+      <button onclick="downloadMonthlyCSV()">Download Monthly CSV</button>
+      <button onclick="deleteAllExpenses()" style="background-color: red; color: white;">🗑️ Delete All Expenses</button>
+
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-database-compat.js"></script>
+
+  <script>
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBrhgw5PJ2P0-uccCHz7N9zbQ5epxvf4GM",
+  authDomain: "expense-splitter-d4fa1.firebaseapp.com",
+  databaseURL: "https://expense-splitter-d4fa1-default-rtdb.firebaseio.com",
+  projectId: "expense-splitter-d4fa1",
+  storageBucket: "expense-splitter-d4fa1.firebasestorage.app",
+  messagingSenderId: "498765087704",
+  appId: "1:498765087704:web:f70c7e5f26d23c5c5968ad",
+  measurementId: "G-K1TD9KVCN9"
+};
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+  </script>
+
+  <script src="Script.js"></script>
+</body>
+</html>
